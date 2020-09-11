@@ -1,0 +1,14 @@
+body{
+  border: 1px solid black;
+  display: block;
+  margin: 0 auto;
+  background-color: lightblue;
+}
+.cloud{
+background: url("images/cloud.png");
+height: 160px;
+background-repeat: repeat-x;
+margin-top: 0;
+position: absolute;
+animation: cloudanimation 9s linear infinite;
+}
