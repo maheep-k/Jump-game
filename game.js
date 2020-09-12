@@ -1,14 +1,13 @@
-minHeight=20;
-maxHeight=100;
-minWidth=10;
-maxWidth=20;
-minGap=200;
-maxGap=500;
+
+minHeight=0;
+maxHeight=183;
+minWidth=0;
+maxWidth=110;
+minGap=80;
+maxGap=300;
 gap=randGap();
 var myObstacles=[];
-var colors=["black","red","blue","green","yellow","gray","indigo","Chocolate"];
-var audio=document.getElementById("audio");
-var audio1=document.getElementById("audio1");
+var colors=["black","red","blue","green","yellow","gray","indigo","Chocolate","coral","lightblue"];
 function startGame(){
 	gamearea.start();
 }
@@ -17,18 +16,18 @@ function everyinterval(n){
 	return false;
 }
 function jump(){
-	player.speedY=-2;
+	player.speedY=-10;
 	audio.play();
 }
 function randGap(){
 	return Math.floor(minGap+Math.random()*(maxGap-minGap+1));
 }
 var scoreText={
-	x:900,
-	y:50,
+	x:550,
+	y:90,
 	update:function(text){
-		gamearea.context.fillStyle="gray";
-		gamearea.context.font="30px Consolas";
+		gamearea.context.fillStyle="black";
+		gamearea.context.font="100px Times ";
 		gamearea.context.fillText(text,this.x,this.y);
 	}
 }
@@ -38,14 +37,14 @@ var player={
 	speedY:0,
 	update:function(){
 		gamearea.context.fillStyle="black";
-		gamearea.context.fillRect(this.x,this.y,30,30);
+		gamearea.context.fillRect(this.x,this.y,40,30);
 	},
 	newPos:function(){
-		if(this.y<280){
+		if(this.y<225){
 			this.speedY=2;
 		}
 		this.y=this.y+this.speedY;
-		if(this.speedY==2 && this.y==470){
+		if(this.speedY==3 && this.y==470){
 			this.speedY=0;
 		}
 	},
@@ -67,8 +66,8 @@ function obstacle(){
 		gamearea.context.fillStyle=this.color;
 		gamearea.context.fillRect(this.x,this.y,this.width,this.height);
 	}
-	}
-
+	};
+	
 var gamearea={
 	canvas:document.createElement("canvas"),
 	start:function(){
@@ -104,6 +103,9 @@ var gamearea={
 		gamearea.frame+=1;
 		gamearea.score+=0.01;
 		scoreText.update("Score: "+Math.floor(gamearea.score));
+		myBackground.speedX = -1;
+        myBackground.newPos();    
+        myBackground.update();
 	},
 	clear:function(){
 		gamearea.context.clearRect(0,0,this.canvas.width,this.canvas.width);
@@ -111,6 +113,5 @@ var gamearea={
 	stop:function(){
 		clearInterval(this.interval);
 		alert("Game over (*_*)!!");
-		audio1.play();
 	}
 }

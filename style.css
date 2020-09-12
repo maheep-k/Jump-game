@@ -1,14 +1,26 @@
-body{
-  border: 1px solid black;
-  display: block;
-  margin: 0 auto;
-  background-color: lightblue;
-}
-.cloud{
-background: url("images/cloud.png");
-height: 160px;
-background-repeat: repeat-x;
-margin-top: 0;
-position: absolute;
-animation: cloudanimation 9s linear infinite;
-}
+*{
+  padding: 0;
+  margin: 0;
+  
+  
+  }
+    body{
+      margin: 0;
+      background-image: url(images/cloud.png);
+      background-size:100%;
+      background-color: rgb(57, 172, 211);
+      color: white;
+      height: 100vh;
+      position: relative;
+  }
+  .floor{
+    background-image: url(images/road.jpg);
+    width: 100%;
+    background-repeat: repeat-x;
+    height: 263px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    position: absolute;
+  }
