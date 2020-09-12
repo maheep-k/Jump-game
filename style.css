@@ -1,26 +1,4 @@
-*{
-  padding: 0;
-  margin: 0;
-  
-  
-  }
-    body{
-      margin: 0;
-      background-image: url(images/cloud.png);
-      background-size:100%;
-      background-color: rgb(57, 172, 211);
-      color: white;
-      height: 100vh;
-      position: relative;
-  }
-  .floor{
-    background-image: url(images/road.jpg);
-    width: 100%;
-    background-repeat: repeat-x;
-    height: 263px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: block;
-    position: absolute;
-  }
+canvas {
+    border: 1px solid black;
+    background-color: lightblue;
+}
