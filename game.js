@@ -30,9 +30,10 @@ function everyinterval(n){
 	return false;
 }
 
-function jump(){
+function jump(e){
+	if(e.keyCode == 32){
 	player.speedY= -2;
-
+}
 }
 
 function randGap(){
