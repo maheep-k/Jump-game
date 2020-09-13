@@ -25,14 +25,14 @@ function startGame(){
 
 
 
-function everyinterval(n){
+function everyinterval(n){//frame counts how many types we run "update gameArea", if frame is a multiple of n we send true
 	if(gamearea.frame % n==0) return true;
 	return false;
 }
 
-function jump(e){
-	if(e.keyCode == 32){
-	player.speedY= -2;
+function jump(spaceBar){
+	if(spaceBar.keyCode == 32){
+	player.speedY= -4;
 }
 }
 
@@ -62,18 +62,17 @@ var player={
 		gamearea.context.fillStyle="black";
 		gamearea.context.fillRect(this.x,this.y,30,30);
 	},
+	// speed and maximum height reached by player is defined here. decreasing 280 will increase height.
 	newPos:function(){
 		if(this.y < 280){
 		this.speedY=2;
-		}
+		} 
 		this.y = this.y + this.speedY;
 		if(this.speedY==2 && this.y==470){
 			this.speedY=0;
-
  }
-
 	},
-	crashWith:function(obs){
+	crashWith:function(obs){//here 30 is added because this.x and this.y shows one point...adding 30 makes it the entire player.
 		if(this.x+30 > obs.x  &&  this.x < obs.x+obs.width  &&  this.y+30 > obs.y){
 			return true;
 		}
@@ -120,12 +119,12 @@ var gamearea={
 				return;
 			}
 		}
-		gamearea.clear();
-		if(everyinterval(gap)){
-			myObstacles.push(new obstacle());
+		gamearea.clear(); //clear the game area, so as to not create a huge obstacle with never ending width
+		if(everyinterval(gap)){// here after running 'gap' value a new obstacle is added. example: if gap was 1 s, after every 1 sec a new obstacle will be added.
+			myObstacles.push(new obstacle());// we added a new obstacle.
 			gap=randGap();
 			gamearea.frame=0;
-		}
+		}// for decreasing x abscissa of the obstacles, meaning the obstacle will start from one one and with time go to another end.
 		for(i=0;i<myObstacles.length;i++){
 			myObstacles[i].x-=1;
 			myObstacles[i].draw();
